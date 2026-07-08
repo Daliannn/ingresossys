@@ -12,19 +12,19 @@ async function cargarEstado() {
 
         if (!datos.url) {
 
-            estado.innerHTML = "Servidor fuera de servicio";
+            estado.innerHTML = "Sistema no disponible";
             estado.style.background = "#FEE2E2";
             estado.style.color = "#991B1B";
 
             mensaje.innerHTML =
-                "El sistema no está disponible en este momento.<br>Intente nuevamente más tarde.";
+                "El sistema no está disponible en este momento.";
 
             boton.disabled = true;
 
             return;
         }
 
-        estado.innerHTML = "Servidor en línea";
+        estado.innerHTML = "Sistema disponible";
         estado.style.background = "#DCFCE7";
         estado.style.color = "#166534";
 
@@ -40,12 +40,12 @@ async function cargarEstado() {
     }
     catch {
 
-        estado.innerHTML = "Servidor fuera de servicio";
+        estado.innerHTML = "Error al consultar el servidor";
         estado.style.background = "#FEE2E2";
         estado.style.color = "#991B1B";
 
         mensaje.innerHTML =
-            "No fue posible consultar el estado del sistema.";
+            "No fue posible consultar el estado.";
 
         boton.disabled = true;
     }
