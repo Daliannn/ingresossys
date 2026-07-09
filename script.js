@@ -55,14 +55,15 @@ async function cargarEstado() {
     }
     catch {
 
-        estado.innerHTML = "Error al consultar el servidor";
+        estado.innerHTML = "Sistema no disponible";
         estado.style.background = "#FEE2E2";
         estado.style.color = "#991B1B";
 
         mensaje.innerHTML =
-            "No fue posible consultar el estado.";
+            "El servidor no está disponible en este momento. Contacte al administrador.";
 
         boton.disabled = true;
+        boton.innerHTML = "Sistema no disponible";
     }
 
 }
