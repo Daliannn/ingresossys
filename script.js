@@ -17,11 +17,26 @@ async function cargarEstado() {
             estado.style.color = "#991B1B";
 
             mensaje.innerHTML =
-                "El sistema no está disponible en este momento.";
+                "No existe una dirección publicada para el sistema.";
 
             boton.disabled = true;
 
             return;
+        }
+
+        const controller = new AbortController();
+
+        const timeout = setTimeout(() => controller.abort(), 3000);
+
+        const health = await fetch(`${datos.url}/api/health`, {
+            cache: "no-store",
+            signal: controller.signal
+        });
+
+        clearTimeout(timeout);
+
+        if (!health.ok) {
+            throw new Error("La API no respondió correctamente.");
         }
 
         estado.innerHTML = "Sistema disponible";
